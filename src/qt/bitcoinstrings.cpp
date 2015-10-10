@@ -27,7 +27,7 @@ QT_TRANSLATE_NOOP("bitcoin-core", "Set database disk log size in megabytes (defa
 QT_TRANSLATE_NOOP("bitcoin-core", "Specify connection timeout (in milliseconds)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Connect through socks4 proxy"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Allow DNS lookups for addnode and connect"),
-QT_TRANSLATE_NOOP("bitcoin-core", "Listen for connections on <port> (default: 9982 or testnet: 9984)"),
+QT_TRANSLATE_NOOP("bitcoin-core", "Listen for connections on <port> (default: 9984 or testnet: 9984)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Maintain at most <n> connections to peers (default: 125)"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Add a node to connect to and attempt to keep the connection open"),
 QT_TRANSLATE_NOOP("bitcoin-core", "Connect only to the specified node"),
