@@ -15,8 +15,8 @@
 #include <string>
 #include "uint256.h"
 
-#define GRANTCOIN_PORT  9982
-#define RPC_PORT     9983
+#define GRANTCOIN_PORT  9984
+#define RPC_PORT     9985
 #define TESTNET_PORT 9984
 #define TESTNET_RPC_PORT 9985
 
