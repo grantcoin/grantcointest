@@ -2302,11 +2302,11 @@ bool LoadBlockIndex(bool fAllowNew)
             return false;
 
         // Genesis Block:
-        // CBlock(hash=0000000f0483c7cc4433, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=ca7e1b14fe, nTime=1427086539, nBits=1d0fffff, nNonce=413974755, vtx=1, vchBlockSig=)
-        //   Coinbase(hash=ca7e1b14fe, nTime=1427081625, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+        // CBlock(hash=00000000d8aa572a3fec, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=20e0e4a833, nTime=1444502964, nBits=1d0fffff, nNonce=131588037, vtx=1, vchBlockSig=)
+        //   Coinbase(hash=20e0e4a833, nTime=1444493178, ver=1, vin.size=1, vout.size=1, nLockTime=0)
         //     CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d020f274554686520436f75726965722d4a6f75726e616c2032312d4d41522d32303135205072696e636520436861726c65732063616c6c7320666f722061207265766f6c7574696f6e)
         //     CTxOut(empty)
-        //   vMerkleTree: ca7e1b14fe
+        //   vMerkleTree: 20e0e4a833
 
         // Genesis block
         const char* pszTimestamp = "The Courier-Journal 21-MAR-2015 Prince Charles calls for a revolution";
@@ -2323,7 +2323,7 @@ bool LoadBlockIndex(bool fAllowNew)
         block.nVersion = 1;
         block.nTime    = 1444502964;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 0;
+        block.nNonce   = 131588037;
 
         if (fTestNet)
         {
@@ -2332,33 +2332,6 @@ bool LoadBlockIndex(bool fAllowNew)
         }
 
         // Removed code to mine genesis block
-
-        CBigNum bnTarget;
-        bnTarget.SetCompact(block.nBits);
-
-        while (block.GetHash() > bnTarget.getuint256())
-        {
-         if (block.nNonce % 1048576 == 0)
-             printf("n=%dM hash=%s\n", block.nNonce / 1048576,
-                 block.GetHash().ToString().c_str());
-         if (block.nNonce < 4294967295)
-             block.nNonce++;
-         else
-         {
-             block.nTime = GetAdjustedTime();
-             printf("block nTime new value=%d\n", block.nTime);
-             block.nNonce = 0;
-         }
-        }
-
-        printf("Grantcoin Found Genesis Block:\n");
-        printf("genesis hash=%s\n", block.GetHash().ToString().c_str());
-        printf("merkle root=%s\n", block.hashMerkleRoot.ToString().c_str());
-        printf("block nTime=%d\n", block.nTime);  // latest block.nTime from while loop
-        block.print();
-
-        printf("Grantcoin End Genesis Block\n");
-
 
         //// debug print
         printf("%s\n", block.GetHash().ToString().c_str());
