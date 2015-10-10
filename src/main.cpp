@@ -2307,7 +2307,7 @@ bool LoadBlockIndex(bool fAllowNew)
         // Genesis block
         const char* pszTimestamp = "The Courier-Journal 21-MAR-2015 Prince Charles calls for a revolution";
         CTransaction txNew;
-        txNew.nTime = 1427081625;
+        txNew.nTime = 1444493178;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(9999) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -2317,9 +2317,9 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1427086539;
+        block.nTime    = 1444502964;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 413974755;
+        block.nNonce   = 0;
 
         if (fTestNet)
         {
