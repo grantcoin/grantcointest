@@ -2302,11 +2302,11 @@ bool LoadBlockIndex(bool fAllowNew)
             return false;
 
         // Genesis Block:
-        // CBlock(hash=00000000d8aa572a3fec, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=20e0e4a833, nTime=1444502964, nBits=1d0fffff, nNonce=131588037, vtx=1, vchBlockSig=)
-        //   Coinbase(hash=20e0e4a833, nTime=1444493178, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        //     CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d020f274554686520436f75726965722d4a6f75726e616c2032312d4d41522d32303135205072696e636520436861726c65732063616c6c7320666f722061207265766f6c7574696f6e)
+        // CBlock(hash=000000075c9bddc6a463, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=650de49878, nTime=1444510495, nBits=1d0fffff, nNonce=87045764, vtx=1, vchBlockSig=)
+        //   Coinbase(hash=650de49878, nTime=1444509104, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+        //     CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d020f274c54526575746572732031302d4f43542d323031352048756e6472656473206f662074686f7573616e64732070726f7465737420696e204265726c696e20616761696e73742045552d5553207472616465206465616c)
         //     CTxOut(empty)
-        //   vMerkleTree: 20e0e4a833
+        //   vMerkleTree: 650de49878
 
         // Genesis block
         const char* pszTimestamp = "Reuters 10-OCT-2015 Hundreds of thousands protest in Berlin against EU-US trade deal";
@@ -2323,7 +2323,7 @@ bool LoadBlockIndex(bool fAllowNew)
         block.nVersion = 1;
         block.nTime    = 1444510495;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 0;
+        block.nNonce   = 87045764;
 
         if (fTestNet)
         {
@@ -2332,33 +2332,6 @@ bool LoadBlockIndex(bool fAllowNew)
         }
 
         // Removed code to mine genesis block
-
-        CBigNum bnTarget;
-        bnTarget.SetCompact(block.nBits);
-
-        while (block.GetHash() > bnTarget.getuint256())
-        {
-         if (block.nNonce % 1048576 == 0)
-             printf("n=%dM hash=%s\n", block.nNonce / 1048576,
-                 block.GetHash().ToString().c_str());
-         if (block.nNonce < 4294967295)
-             block.nNonce++;
-         else
-         {
-             block.nTime = GetAdjustedTime();
-             printf("block nTime new value=%d\n", block.nTime);
-             block.nNonce = 0;
-         }
-        }
-
-        printf("Grantcoin Found Genesis Block:\n");
-        printf("genesis hash=%s\n", block.GetHash().ToString().c_str());
-        printf("merkle root=%s\n", block.hashMerkleRoot.ToString().c_str());
-        printf("block nTime=%d\n", block.nTime);  // latest block.nTime from while loop
-        block.print();
-
-        printf("Grantcoin End Genesis Block\n");
-
 
         //// debug print
         printf("%s\n", block.GetHash().ToString().c_str());
