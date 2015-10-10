@@ -854,36 +854,40 @@ int64 GetProofOfWorkReward(int nHeight)
     int64 nSubsidy = COIN;
     if (nHeight == 1)
         nSubsidy = 10000000000 * COIN;  // Grantcoin created for planned distribution
-    else if (nHeight < 50000)
+    else if (nHeight < 500)
         nSubsidy = CENT;  // De minimus reward pre-launch and up to 2 weeks post-launch
-    else if (nHeight < 51000)
+    else if (nHeight < 510)
         nSubsidy = 6.25 * COIN;  // Public mining begins
-    else if (nHeight < 52000)
+    else if (nHeight < 520)
         nSubsidy = 12.5 * COIN;  // Reward gradually increases during first few days
-    else if (nHeight < 53000)
+    else if (nHeight < 530)
         nSubsidy = 25 * COIN;
-    else if (nHeight < 54000)
+    else if (nHeight < 540)
         nSubsidy = 50 * COIN;
-    else if (nHeight < 55000)
+    else if (nHeight < 550)
         nSubsidy = 100 * COIN;
-    else if (nHeight < 56000)
+    else if (nHeight < 560)
         nSubsidy = 200 * COIN;
-    else if (nHeight < 100000)
+    else if (nHeight < 1000)
         nSubsidy = 400 * COIN;  // Maximum reward reached
-    else if (nHeight < 150000)
+    else if (nHeight < 1500)
         nSubsidy = 200 * COIN;  // Reward starts to decline
-    else if (nHeight < 200000)
+    else if (nHeight < 2000)
         nSubsidy = 100 * COIN;
-    else if (nHeight < 250000)
+    else if (nHeight < 2500)
         nSubsidy = 50 * COIN;
-    else if (nHeight < 300000)
+    else if (nHeight < 3000)
         nSubsidy = 25 * COIN;  // PoW-PoS hybrid phase begins
-    else if (nHeight < 350000)
+    else if (nHeight < 3500)
         nSubsidy = 12.5 * COIN;
-    else if (nHeight < 400000)
+    else if (nHeight < 4000)
         nSubsidy = 6.25 * COIN;
-    else if (nHeight >= 400000)
-        nSubsidy = CENT;  // PoW reward phased out to de minimus value
+    else if (nHeight < 4500)
+        nSubsidy = 3.13 * COIN;
+    else if (nHeight < 5000)
+        nSubsidy = 1.57 * COIN;
+    else if (nHeight >= 5000)
+        nSubsidy = COIN;  // PoW reward reaches final minimum value
 
     // if (fDebug && GetBoolArg("-printcreation"))
     //     printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
