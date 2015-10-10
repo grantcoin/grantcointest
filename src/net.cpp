@@ -998,8 +998,8 @@ void MapPort(bool /* unused fMapPort */)
 // The second name should resolve to a list of seed addresses.
 // testnet dns seed begins with 't', all else are grantcoin dns seeds.
 static const char *strDNSSeed[][2] = {
-    {"seed1", "seed1.grantcoin.net"},
-    {"seed2", "seed2.grantcoin.net"},
+//    {"seed1", "seed1.grantcoin.net"},
+//    {"seed2", "seed2.grantcoin.net"},
 //    {"seedgrt", "seedgrt.grantcoin.net"},
 //    {"tnseed", "tnseed.grantcoin.net"},
 //    {"tnseedgrt", "tnseedgrt.grantcoin.net"},
