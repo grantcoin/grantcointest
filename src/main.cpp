@@ -2333,11 +2333,38 @@ bool LoadBlockIndex(bool fAllowNew)
 
         // Removed code to mine genesis block
 
+        CBigNum bnTarget;
+        bnTarget.SetCompact(block.nBits);
+
+        while (block.GetHash() > bnTarget.getuint256())
+        {
+         if (block.nNonce % 1048576 == 0)
+             printf("n=%dM hash=%s\n", block.nNonce / 1048576,
+                 block.GetHash().ToString().c_str());
+         if (block.nNonce < 4294967295)
+             block.nNonce++;
+         else
+         {
+             block.nTime = GetAdjustedTime();
+             printf("block nTime new value=%d\n", block.nTime);
+             block.nNonce = 0;
+         }
+        }
+
+        printf("Grantcoin Found Genesis Block:\n");
+        printf("genesis hash=%s\n", block.GetHash().ToString().c_str());
+        printf("merkle root=%s\n", block.hashMerkleRoot.ToString().c_str());
+        printf("block nTime=%d\n", block.nTime);  // latest block.nTime from while loop
+        block.print();
+
+        printf("Grantcoin End Genesis Block\n");
+
+
         //// debug print
         printf("%s\n", block.GetHash().ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x20e0e4a83365d96a79a4df5355956c3b88c33b04d408ce3ec5d4cf52a76d0bdd"));
+        assert(block.hashMerkleRoot == uint256("0x650de4987865a27a1c248908c6a93b9d55931ee3df0e97a845c0915bb53a362f"));
         block.print();
         assert(block.GetHash() == hashGenesisBlock);
         assert(block.CheckBlock());
