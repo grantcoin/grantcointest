@@ -265,8 +265,8 @@ class CBitcoinAddress : public CBase58Data
 public:
     enum
     {
-        PUBKEY_ADDRESS = 38,  // grantcoin: addresses begin with 'G'
-        SCRIPT_ADDRESS = 97, // grantcoin: addresses begin with 'g'
+        PUBKEY_ADDRESS = 65,  // grantcoin test blockchain: addresses begin with 'T'
+        SCRIPT_ADDRESS = 127, // grantcoin test blockchain: addresses begin with 't'
         PUBKEY_ADDRESS_TEST = 111,
         SCRIPT_ADDRESS_TEST = 196,
     };
