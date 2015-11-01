@@ -1213,7 +1213,8 @@ bool CTransaction::ConnectInputs(CTxDB& txdb, MapPrevTx inputs,
 
             // peercoin: check transaction timestamp
             if (txPrev.nTime > nTime)
-                return DoS(100, error("ConnectInputs() : transaction timestamp earlier than input transaction"));
+                return DoS(100, error("ConnectInputs() : tx %s timestamp %d earlier than input tx %s timestamp %d",
+                       GetHash().ToString().c_str(), nTime, txPrev.GetHash().ToString().c_str(), txPrev.nTime));
 
             // Check for negative or overflow input values
             nValueIn += txPrev.vout[prevout.n].nValue;
